@@ -1,0 +1,239 @@
+/* Enhanced Modern Chat UI */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(to right, #ff758c, #ff7eb3);
+    --dark-bg: #1a1a2e;
+    --light-text: #f8f9fa;
+    --accent-color: #64f4ac;
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --blur-effect: blur(16px);
+    --message-bg: rgba(255, 255, 255, 0.08);
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--primary-gradient);
+    color: var(--light-text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
+  /* Premium Glass Form */
+  form {
+    background: var(--card-bg);
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 16px 20px;
+    margin: 1rem 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(100, 244, 172, 0.3);
+  }
+  
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  button {
+    background: var(--secondary-gradient);
+    color: white;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
+  }
+  
+  /* Luxury Messages Container */
+  .messages-wrapper {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.3);
+    max-height: 70vh;
+    min-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.4) transparent;
+  }
+  
+  .messages-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .messages-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .messages-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  
+  /* Premium Message Cards */
+  .message-card {
+    background: var(--message-bg);
+    backdrop-filter: var(--blur-effect);
+    padding: 1.75rem;
+    margin: 1.5rem 0;
+    border-radius: 16px;
+    border-left: 5px solid var(--accent-color);
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .message-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.05), transparent);
+    z-index: -1;
+  }
+  
+  .message-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .message-card h3 {
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .message-card h3::before {
+    content: '💬';
+    margin-right: 10px;
+    font-size: 1.1em;
+  }
+  
+  .message-card p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  
+  .message-card p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--accent-color);
+    opacity: 0.6;
+  }
+  
+  /* Timestamp Style */
+  .message-card .timestamp {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.75rem;
+    text-align: right;
+  }
+  
+  /* Empty State Design */
+  .no-messages {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+    padding: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .no-messages::before {
+    content: '✉️';
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+    
+    form, .messages-wrapper {
+      width: 95%;
+      padding: 1.75rem;
+    }
+    
+    .message-card {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Animation Enhancements */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .message-card {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Micro-interactions */
+  input, button, .message-card {
+    transition: all 0.3s ease-out;
+  }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messenger</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+    <form action="/submit" method="POST">
+        <input type="text" name="name" id="name" placeholder="Type your name here..." required>
+        <br>
+        <input type="text" name="message" id="message" placeholder="Type your message here..." required>
+        <br>
+        <button type="submit" id="submit">Send</button>
+    </form>
+
+    <h2>Messages</h2>
+
+    <div class="messages-wrapper">
+        <% if (users && users.length > 0) { %>
+            <% users.forEach(user => { %>
+                <div class="message-card">
+                    <h3><%= user.name %></h3>
+                    <p><%= user.message %></p>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="no-messages">No messages yet. Be the first to send one!</p>
+        <% } %>
+    </div>
+</body>
+</html>
